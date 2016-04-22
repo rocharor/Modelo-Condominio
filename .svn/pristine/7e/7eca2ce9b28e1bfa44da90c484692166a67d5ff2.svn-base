@@ -1,0 +1,13 @@
+
+<div class="avisos ">
+    <form action="{$smarty.const._CAMINHO_}/adm/aviso" method="post" name="form_avisos">
+        <div id='avisos' class='cadastros'>
+            <h3>Cadastro de avisos</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='aviso_titulo'></p>
+            <p><b>Data</b><input type="text" class="form-control" name='aviso_data'></p>
+            <p><b>Itens</b><textarea class="form-control" name='aviso_itens'></textarea></p>
+            <input type="hidden" name="setAviso" value=1>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+</div>

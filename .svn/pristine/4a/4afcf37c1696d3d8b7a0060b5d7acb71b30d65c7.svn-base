@@ -1,0 +1,57 @@
+<?php
+    namespace Rocharor\Condominio\Gerais;
+
+    class Conexao {
+
+        public function __construct(){}
+
+        /**
+        * Faz a conexão com o banco de dados
+        *
+        * @param mixed $dados = informações do BD
+        * @return {\PDO|\PDO_Object}
+        */
+        public static function open($arquivo){
+
+            if(file_exists($arquivo)) {
+                $dados = parse_ini_file($arquivo);
+            }else{
+                echo 'Dados do Banco não encontrados';
+            }
+
+            $host = $dados['host'];
+            $port = $dados['port'];
+            $name = $dados['db'];
+            $user = $dados['user'];
+            $pass = $dados['pass'];
+            $type = $dados['type'];
+
+            switch($type) {
+                case 'mysql':
+                    $conn = new \PDO('mysql:host=' . $host . '; port=' . $port . '; dbname=' . $name, $user, $pass ,     array(
+                        \PDO::ATTR_PERSISTENT => true ,
+                        \PDO::ATTR_TIMEOUT => 30,
+                        ));
+                    break;
+                case 'pgsql':
+                    $conn = new \PDO('pgsql:dbname=' . $name . '; user=' . $user . '; password=' . $pass . '; host=' . $host);
+                    break;
+                case 'sqlite':
+                    $conn = new \PDO('sqlite:name=' . $name);
+                    break;
+                case 'ibase':
+                    $conn = new \PDO('firebird:dbname=' . $name, $user, $pass);
+                    break;
+                case 'oci8':
+                    $conn = new \PDO('oci:dbname=' . $name, $user, $pass);
+                    break;
+                case 'mssql':
+                    $conn = new \PDO('mssql:host=' . $host . '; dbname=' . $name, $user, $pass);
+                    break;
+            }
+
+            $conn->exec("SET CHARACTER SET utf8");
+            //$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $conn;
+        }
+    }

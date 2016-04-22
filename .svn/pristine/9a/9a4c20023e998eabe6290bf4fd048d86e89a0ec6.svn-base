@@ -1,0 +1,13 @@
+<link type="text/css" rel="stylesheet" href="{$link}public/css/adm.css" />
+
+<div align="center">
+    <h2 class="text-danger">Acesso restrito</h2>
+    {if $msg neq ''}
+            <span class='text-danger'><b>{$msg}</b></span>;
+    {/if}
+    <form action="/condominio/adm/login" method="post" name="form">
+        <p><b>Login:</b> <input type="text" class="form-control login" name='user_login' /></p>
+        <p><b>Senha:</b> <input type="password" class="form-control login" name='senha_login' /></p>
+        <p><button type="submit" class="btn btn-primary">Logar</button></p>
+    </form>
+</div>

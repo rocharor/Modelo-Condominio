@@ -1,0 +1,78 @@
+<link type="text/css" rel="stylesheet" href="../css/adm.css" />
+
+<div class="avisos ">
+    <form action="{$smarty.const._CAMINHO_}/adm/aviso" method="post" name="form_avisos">
+        <div id='avisos' class='cadastros'>
+            <h3>Cadastro de avisos</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='aviso_titulo'></p>
+            <p><b>Data</b><input type="text" class="form-control" name='aviso_data' id='aviso_data'></p>
+            <p><b>Descrição</b><textarea id="editor_aviso_novo" name="aviso_descricao" ></textarea></p>
+            <input type="hidden" name="act" value='setAviso'>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+</div>
+<table class="table table-striped" data-caminho="{$smarty.const._CAMINHO_}/adm/aviso">
+    <tr>
+        <td style="width: 50%;"><b>Titulo</b></td>
+        <td style="width: 50%;"><b>Data</b></td>
+        <td><b>Visualizar</b></td>
+        <td><b>Editar</b></td>
+        <td><b>Excluir</b></td>
+    </tr>
+    {foreach from=$avisos item=aviso}
+        <tr data-aviso-id="{$aviso.aviso_id}">
+            <td>{$aviso.titulo}</td>
+            <td>{$aviso.data_evento}</td>
+            <td  align="center"><button class="btn btn-info act-visualizar-aviso"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td  align="center"><button class="btn btn-primary act-editar-aviso"><span class="glyphicon glyphicon-pencil primary"></span></button></td>
+            <td  align="center"><button class="btn btn-danger act-excluir-aviso"><span class="glyphicon glyphicon-trash primary"></span></button></td>
+        </tr>
+    {/foreach}
+</table>
+
+<!--MODAL VISUALIZAR-->
+<div class="modal fade" id='modal_visualizar_aviso'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Dados</h2>
+                <label>Titulo: &nbsp;</label><span id="titulo_visualizar"></span><br>
+                <label>Data: &nbsp;</label><span id="data_visualizar"></span><br>
+                <label>Descrição: &nbsp;</label><span id="descicao_visualizar"></span>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL EDITAR-->
+<div class="modal fade" id='modal_editar_aviso'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Dados</h2>
+                <label>Titulo: &nbsp;</label><input class="form-control" name="titulo_editar" id="titulo_editar" /><br>
+                <label>Data: &nbsp;</label><input class="form-control" name="data_editar" id="data_editar" /><br>
+                <label>Descrição: &nbsp;<textarea class="form-control" id="editor_aviso_editar" name="descricao_editar" ></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-success act-salvar-edicao" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../libs/ckeditor_standard/ckeditor.js"></script>
+<script type="text/javascript" src="../js/adm/aviso.js"></script>
+
+<script>
+    $('#aviso_data').mask('99/99/9999 99:99');
+    CKEDITOR.replace("editor_aviso_novo").config.width = 800;
+    CKEDITOR.replace("editor_aviso_editar").config.width = 550;
+</script>

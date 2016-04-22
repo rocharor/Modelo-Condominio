@@ -1,0 +1,22 @@
+<div class="navbar">
+    <div class="container" align="center">
+        <span class="visible-sm-block visible-md-block visible-lg-block"><a href="{$smarty.const._CAMINHO_}"><h3>Associação de moradores</h3></a></span>
+        <span class="visible-xs-block"><a href="/condominio/"><h4>Associação de moradores</h4></a></span>
+
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{$smarty.const._CAMINHO_}/AchadosPerdidos">Achados & Perdidos</a></li>
+                    <li><a href="{$smarty.const._CAMINHO_}/Classificados">Classificados</a></li>
+                    <li><a href="{$smarty.const._CAMINHO_}/Obras">Obras</a></li>
+                    <li><a href="{$smarty.const._CAMINHO_}/QuadroAvisos">Quadro de Avisos</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{$smarty.const._CAMINHO_}/Adm"><b>Login</b></a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</div>
+

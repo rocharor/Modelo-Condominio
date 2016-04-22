@@ -1,0 +1,52 @@
+<?php
+    namespace Rocharor\Condominio\Modulos\Models;
+
+    use Rocharor\Condominio\Sistema\Model;
+    use Rocharor\Condominio\Sistema\Conexao;
+
+    class AvisoModel extends Model{
+
+	    public function setAviso($titulo,$data,$descricao){
+            global $conn;
+
+            $query = "INSERT INTO avisos (titulo,data_evento,descricao,data_cadastro) VALUES(:titulo,:data_evento,:descricao,NOW())";
+            $param = array( ":titulo"=>$titulo,
+                            ":data_evento"=>$data,
+                            ":descricao"=>$descricao);
+            $rs = $conn->prepare($query);
+
+            if($rs->execute($param)){
+                return true;
+            }else{
+                return false;
+            }
+
+
+
+	    }
+
+        public function getAviso(){
+            return true;
+        }
+
+        public function setAchadosPerdidos($dados){
+
+        }
+        public function getAchadosPerdidos(){
+
+        }
+
+        public function setObra($dados){
+
+        }
+        public function getObra(){
+
+        }
+
+        public function setClassificados($dados){
+
+        }
+        public function getClassificados(){
+
+        }
+    }

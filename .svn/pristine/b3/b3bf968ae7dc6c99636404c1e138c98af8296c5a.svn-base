@@ -1,0 +1,33 @@
+<?php
+class GeralModel extends Model
+{
+	public function setAviso($dados){
+        return true;
+	}
+
+    public function getAviso(){
+        return true;
+    }
+
+    public function setAchadosPerdidos($dados){
+
+    }
+    public function getAchadosPerdidos(){
+
+    }
+
+    public function setObra($dados){
+
+    }
+    public function getObra(){
+
+    }
+
+    public function setClassificados($dados){
+
+    }
+    public function getClassificados(){
+
+    }
+}
+?>

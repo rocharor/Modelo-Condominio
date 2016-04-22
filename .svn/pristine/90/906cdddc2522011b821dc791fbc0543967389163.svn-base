@@ -1,0 +1,115 @@
+<?php
+    namespace Rocharor\Condominio\Modulos\Controllers;
+
+    use Rocharor\Condominio\Modulos\Models\AvisoModel;
+    use Rocharor\Condominio\Sistema\Controller;
+    use Rocharor\Condominio\Sistema\Sessao;
+
+    class Adm extends Controller{
+
+        public function indexAction($link){
+            die('Index');
+        }
+
+        public function loginAction(){
+
+            if(Sessao::pegaSessao('login') == 1){
+                $variaveis = ['pagina_main' => 'adm/adm.html',
+                              'link' => '../',
+                              'navegacao' => '',
+                              'msg' => '',
+                              'anuncio'=>false];
+            }else if(isset($_POST['user_login']) || isset($_POST['senha_login'])){
+                $user = $_POST['user_login'];
+                $pass = $_POST['senha_login'];
+
+                if($user == 'admin' && $pass == 'admin'){
+                    Sessao::setaSessao(array('login'=>1));
+                    $variaveis = ['pagina_main' => 'adm/adm.html',
+                              'link' => '../',
+                              'navegacao' => '',
+                              'msg' => '',
+                              'anuncio'=>false];
+                }else{
+                    $variaveis = ['pagina_main' => 'adm/login.html',
+                              'link' => '../',
+                              'navegacao' => '',
+                              'msg' => 'Usuário ou senha invalidos',
+                              'anuncio'=>false];
+                }
+            }else{
+                $variaveis = ['pagina_main' => 'adm/login.html',
+                              'link' => '../',
+                              'navegacao' => '',
+                              'msg' => '',
+                              'anuncio'=>false];
+            }
+
+            $this->view('main',$variaveis);
+        }
+
+        public function logoffAction(){
+
+            Sessao::setaSessao(array('login'=>0));
+            header("location: "._CAMINHO_.'/adm/login');
+
+        }
+
+        public function avisoAction(){
+
+            $aviso = new AvisoModel();
+
+            if(isset($_POST['act'])){
+
+                if($_POST['act'] == 'setAviso'){
+
+                    $titulo = $_POST['aviso_titulo'];
+                    $data = $_POST['aviso_data'];
+                    $descricao = $_POST['aviso_descricao'];
+
+                    $aviso->setAviso($titulo,$data,$descricao);
+                }
+
+                if($_POST['act'] == 'getAviso'){
+
+                    $aviso_id = $_POST['aviso_id'];
+                    $dados = $aviso->getAvisos($aviso_id);
+
+                    echo json_encode($dados);
+                    die();
+                }
+
+                if($_POST['act'] == 'excluirAviso'){
+                    $aviso_id = $_POST['aviso_id'];
+                    $ret = $aviso->deleteAviso($aviso_id);
+
+                    echo json_encode($ret);
+                    die();
+                }
+            }
+
+            $avisos = $aviso->getAvisos();
+
+            $variaveis = ['pagina_main' => 'adm/admAviso.html',
+                          'avisos' => $avisos,
+                          'navegacao' => 'ADM / Cadastro de avisos',
+                          'link' => '../',
+                          'anuncio'=>false];
+
+            $this->view('main',$variaveis);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }

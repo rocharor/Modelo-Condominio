@@ -1,0 +1,8 @@
+.navbar{
+    background-color: #63B6C2;
+}
+
+.navbar-nav{
+     position: absolute;
+     top:4px;
+}

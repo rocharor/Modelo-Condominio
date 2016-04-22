@@ -1,0 +1,15 @@
+<?php
+    namespace Rocharor\Condominio\Modulos\Controllers;
+
+    use Rocharor\Condominio\Sistema\Controller;
+
+    class AchadosPerdidos extends Controller{
+
+        public function indexAction($link){
+            $variaveis = ['pagina_main' => 'achados_perdidos.html',
+                          'link' => $link,
+                          'anuncio'=>true];
+
+            $this->view('main',$variaveis);
+        }
+    }

@@ -1,0 +1,29 @@
+$(".act-visualizar-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var aviso = getavisos(aviso_id );
+
+    console.log('Visualizar - ' + aviso_id);
+
+});
+
+$(".act-editar-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var aviso = getavisos(aviso_id );
+
+    console.log('Editar - ' + aviso_id);
+
+});
+
+$(".act-excluir-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var aviso = getavisos(aviso_id );
+
+    console.log('Excluir - ' + aviso_id);
+});
+
+function getavisos(aviso_id){
+
+}

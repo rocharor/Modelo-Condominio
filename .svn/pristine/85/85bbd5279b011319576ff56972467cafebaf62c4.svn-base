@@ -1,0 +1,15 @@
+<?php
+    namespace Rocharor\Condominio\Controllers;
+
+    use Rocharor\Condominio\Gerais\Controller;
+
+    class Classificados extends Controller{
+
+        public function indexAction($link){
+            $variaveis = ['pagina_main' => 'classificados.html',
+                          'link' => $link,
+                          'anuncio'=>true];
+
+            $this->view('main',$variaveis);
+        }
+    }

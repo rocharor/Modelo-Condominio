@@ -1,0 +1,71 @@
+<link type="text/css" rel="stylesheet" href="{$link}public/css/adm.css" />
+<div>
+    <center><h1>ADM</h1></center>
+
+    <select class="form-control" id='opcoes_cadastro' style="width: 300px;">
+        <option></option>
+        <option value='avisos'>Cadastro de avisos</option>
+        <option value='achadosPerdidos'>Cadastro de achados e perdidos</option>
+        <option value='classificados'>Cadastro de classificados</option>
+        <option value='obras'>Cadastro de obras</option>
+    </select>
+
+    <br>
+    <br>
+
+    <form action="/condominio/adm/" method="post" name="form_avisos">
+        <div id='avisos' class='cadastros'>
+            <h3>Cadastro de avisos</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='aviso_titulo'></p>
+            <p><b>Data</b><input type="text" class="form-control" name='aviso_data'></p>
+            <p><b>Itens</b><textarea class="form-control" name='aviso_itens'></textarea></p>
+            <input type="hidden" name="metodo" value='setAviso'>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+
+    <form action="" method="post" name="form_achados">
+        <div id='achadosPerdidos' class='cadastros'>
+            <h3>Cadastro de achados e perdidos</h3>
+            <p><b>Data</b><input type="text" class="form-control" name='achado_data'></p>
+            <p><b>Objeto</b><input type="text" class="form-control" name='achado_objeto'></p>
+            <p><b>Observação</b><textarea class="form-control" name='achado_obs'></textarea></p>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+
+    <form action="" method="post" name="form_classificados">
+        <div id='classificados' class='cadastros'>
+            <h3>Cadastro de classificados</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='classi_titulo'></p>
+            <p><b>Descrição</b><textarea class="form-control" name='classi_descricao'></textarea></p>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+
+    <form action="" method="post" name="form_obras">
+        <div id='obras' class='cadastros'>
+            <h3>Cadastro de obras</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='obra_titulo'></p>
+            <p><b>Data inicio</b><input type="text" class="form-control" name='obra_dtInicio'></p>
+            <p><b>Data término</b><input type="text" class="form-control" name='obra_dtFim'></p>
+            <p><b>Descrição</b><textarea class="form-control" name='obra_descricao'></textarea></p>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+
+        {if $msg neq ''}
+            <span class='text-success'><b>{$msg}</b></span>;
+        {/if}
+
+</div>
+{literal}
+<script type="text/javascript">
+    $('#opcoes_cadastro').on('change',function(){
+        var opcao = $('#opcoes_cadastro').val();
+
+        $('.cadastros').css('display','none');
+        $('#'+opcao).css('display','block');
+    })
+</script>
+{/literal}

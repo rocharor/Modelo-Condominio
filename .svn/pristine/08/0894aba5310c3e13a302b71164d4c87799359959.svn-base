@@ -1,0 +1,62 @@
+<link type="text/css" rel="stylesheet" href="{$link}Public/css/adm.css" />
+<div>
+    <center><h1>Área Administratíva <a href="{$smarty.const._CAMINHO_}/adm/logoff"><span class="glyphicon glyphicon-off text-danger"></span></a></h1></center>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" ><a href="{$smarty.const._CAMINHO_}/adm/aviso">Avisos</a></li>
+        <li role="presentation"><a href="#">Achados e perdidos</a></li>
+        <li role="presentation"><a href="#">Classificados</a></li>
+        <li role="presentation"><a href="#">Obras</a></li>
+    </ul>
+
+    <div class="achados hide">
+        <form action="" method="post" name="form_achados">
+            <div id='achadosPerdidos' class='cadastros'>
+                <h3>Cadastro de achados e perdidos</h3>
+                <p><b>Data</b><input type="text" class="form-control" name='achado_data'></p>
+                <p><b>Objeto</b><input type="text" class="form-control" name='achado_objeto'></p>
+                <p><b>Observação</b><textarea class="form-control" name='achado_obs'></textarea></p>
+                <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="classificados hide">
+        <form action="" method="post" name="form_classificados">
+            <div id='classificados' class='cadastros'>
+                <h3>Cadastro de classificados</h3>
+                <p><b>Titulo</b><input type="text" class="form-control" name='classi_titulo'></p>
+                <p><b>Descrição</b><textarea class="form-control" name='classi_descricao'></textarea></p>
+                <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="obras hide">
+        <form action="" method="post" name="form_obras">
+            <div id='obras' class='cadastros'>
+                <h3>Cadastro de obras</h3>
+                <p><b>Titulo</b><input type="text" class="form-control" name='obra_titulo'></p>
+                <p><b>Data inicio</b><input type="text" class="form-control" name='obra_dtInicio'></p>
+                <p><b>Data término</b><input type="text" class="form-control" name='obra_dtFim'></p>
+                <p><b>Descrição</b><textarea class="form-control" name='obra_descricao'></textarea></p>
+                <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+            </div>
+        </form>
+    </div>
+
+    {if $msg neq ''}
+        <span class='text-success'><b>{$msg}</b></span>;
+    {/if}
+
+</div>
+{literal}
+<script type="text/javascript">
+    $('#opcoes_cadastro').on('change',function(){
+        var opcao = $('#opcoes_cadastro').val();
+
+        $('.cadastros').css('display','none');
+        $('#'+opcao).css('display','block');
+    })
+</script>
+{/literal}

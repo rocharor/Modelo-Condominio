@@ -1,0 +1,10 @@
+.cadastros{
+    display: none;
+}
+.form-control{
+    width: 400px;
+}
+.login{
+    width: 250px;
+    text-align: center;
+}

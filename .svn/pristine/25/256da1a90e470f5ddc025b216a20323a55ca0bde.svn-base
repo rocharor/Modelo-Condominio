@@ -1,0 +1,16 @@
+<?php
+    require_once '../vendor/autoload.php';
+    require_once '../App/Config.php';
+
+    use Rocharor\Condominio\Gerais\Start;
+
+    $smarty = new Smarty;
+    $smarty->setTemplateDir(VIEWS);
+    $smarty->setCompileDir(INC_ROOT . '/vendor/smarty/smarty/libs/templates_c/');
+    $smarty->setConfigDir(INC_ROOT . '/vendor/smarty/smarty/libs/config/');
+    $smarty->setCacheDir(INC_ROOT  . '/vendor/smarty/smarty/libs/cache/');
+
+
+    $start = new Start();
+
+    $start->iniciar();

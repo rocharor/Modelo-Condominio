@@ -1,0 +1,34 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-02-26 18:08:49
+  from "C:\xampp\htdocs\condominio\App\Modulos\Views\index.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56d086a14812b1_81514923',
+  'file_dependency' => 
+  array (
+    '277988823c52d4e80c6fac583e3a674ab93e10c0' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\condominio\\App\\Modulos\\Views\\index.html',
+      1 => 1456506432,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_56d086a14812b1_81514923 ($_smarty_tpl) {
+?>
+<div align="center" style="border: solid 1px; height: 150px;">
+    <h1>IMAGEM DO PRÉDIO 2</h1>
+</div>
+
+<p><b>Quem somos:</b></p>
+<p>xxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxx</p>
+<p>Este site é designado a ....... ............ .......... </p>
+
+
+<?php }
+}

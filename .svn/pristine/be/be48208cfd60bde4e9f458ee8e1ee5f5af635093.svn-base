@@ -1,0 +1,36 @@
+<?php
+    namespace Rocharor\Condominio\Modulos\Models;
+
+    use Rocharor\Condominio\Sistema\Model;
+
+    class AvisoModel extends Model{
+
+	    public function setAviso($dados){
+            return true;
+	    }
+
+        public function getAviso(){
+            return true;
+        }
+
+        public function setAchadosPerdidos($dados){
+
+        }
+        public function getAchadosPerdidos(){
+
+        }
+
+        public function setObra($dados){
+
+        }
+        public function getObra(){
+
+        }
+
+        public function setClassificados($dados){
+
+        }
+        public function getClassificados(){
+
+        }
+    }

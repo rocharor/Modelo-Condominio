@@ -1,0 +1,16 @@
+<?php
+    namespace Rocharor\Condominio\Controllers;
+
+    use Rocharor\Condominio\Gerais\Controller;
+
+    class Home extends Controller{
+
+        public function indexAction($link){
+
+            $variaveis = ['pagina_main' => 'index.html',
+                           'link' => $link,
+                           'anuncio'=>true];
+
+            $this->view('main',$variaveis);
+        }
+    }

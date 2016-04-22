@@ -1,0 +1,58 @@
+<?php
+    namespace Rocharor\Condominio\Controllers;
+
+    use Rocharor\Condominio\Gerais\Controller;
+
+    class Adm extends Controller{
+
+        public function indexAction($link){
+            $msg = '';
+            if(isset($_POST['metodo'])){
+                $metodo = $_POST['metodo'];
+                $dados = $_POST;
+                unset($dados['metodo']);
+
+                $geral = new GeralModel;
+                $ret = $geral->$metodo($dados);
+                if($ret){
+                    $msg = 'Inserido com sucesso';
+                }
+            }
+
+            if(!isset($_SESSION['logado']) && Sessao::pegaSessao('logado') == 0){
+                $variaveis = ['pagina_main' => 'adm/login.php',
+                              'link' => $link,
+                              'anuncio'=>false];
+            }else{
+                $variaveis = ['pagina_main' => 'adm/adm.php',
+                              'link' => $link,
+                              'msg' => $msg,
+                              'anuncio'=>false];
+            }
+
+            $this->view('main',$variaveis);
+        }
+
+        public function loginAction($link){
+            $user = $_POST['user_login'];
+            $pass = $_POST['senha_login'];
+            //$usuarios = new UsuariosModel;
+            //$listagem = $usuarios->listar();
+
+            if($user == 'admin' && $pass == 'admin'){
+                $variaveis = ['pagina_main' => 'adm/adm.php',
+                          'link' => $link,
+                          'anuncio'=>false];
+
+                $this->view('main',$variaveis);
+            }else{
+                $variaveis = ['pagina_main' => 'adm/login.php',
+                          'link' => $link,
+                          'msg' => 'Usuário ou senha invalidos',
+                          'anuncio'=>false];
+
+                $this->view('main',$variaveis);
+            }
+
+        }
+    }

@@ -1,0 +1,57 @@
+<link type="text/css" rel="stylesheet" href="../css/adm.css" />
+
+<div class="avisos ">
+    <form action="{$smarty.const._CAMINHO_}/adm/aviso" method="post" name="form_avisos">
+        <div id='avisos' class='cadastros'>
+            <h3>Cadastro de avisos</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='aviso_titulo'></p>
+            <p><b>Data</b><input type="text" class="form-control" name='aviso_data' id='aviso_data'></p>
+            <p><b>Descrição</b><textarea id="editor_aviso" name="aviso_descricao" ></textarea></p>
+            <input type="hidden" name="setAviso" value=1>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+</div>
+<table class="table table-striped">
+    <tr>
+        <td style="width: 50%;"><b>Titulo</b></td>
+        <td style="width: 50%;"><b>Data</b></td>
+        <td><b>Visualizar</b></td>
+        <td><b>Editar</b></td>
+        <td><b>Excluir</b></td>
+    </tr>
+    {foreach from=$avisos item=aviso}
+        <tr data-aviso-id="{$aviso.aviso_id}">
+            <td>{$aviso.titulo}</td>
+            <td>{$aviso.data_evento}</td>
+            <td  align="center"><button class="btn btn-info act-visualizar-aviso"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td  align="center"><button class="btn btn-primary act-editar-aviso"><span class="glyphicon glyphicon-pencil primary"></span></button></td>
+            <td  align="center"><button class="btn btn-danger act-excluir-aviso"><span class="glyphicon glyphicon-trash primary"></span></button></td>
+        </tr>
+    {/foreach}
+</table>
+
+<div class="modal fade" id='view_aviso'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Dados</h2>
+                <label>Titulo: &nbsp;</label><span id="titulo_view"></span><br>
+                <label>Data: &nbsp;</label><span id="data_view"></span><br>
+                <label>Descrição: &nbsp;</label><span id="descicao_view"></span>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../libs/ckeditor_standard/ckeditor.js"></script>
+<script type="text/javascript" src="../js/adm/aviso.js"></script>
+
+<script>
+    $('#aviso_data').mask('99/99/9999 99:99');
+    CKEDITOR.replace("editor_aviso").config.width = 800;
+</script>

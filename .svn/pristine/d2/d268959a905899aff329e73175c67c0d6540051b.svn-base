@@ -1,0 +1,20 @@
+<link type="text/css" rel="stylesheet" href="../css/adm.css" />
+
+<div class="avisos ">
+    <form action="{$smarty.const._CAMINHO_}/adm/aviso" method="post" name="form_avisos">
+        <div id='avisos' class='cadastros'>
+            <h3>Cadastro de avisos</h3>
+            <p><b>Titulo</b><input type="text" class="form-control" name='aviso_titulo'></p>
+            <p><b>Data</b><input type="text" class="form-control" name='aviso_data'></p>
+            <p><b>Ata</b><textarea name="avisos_inserir" id="avisos_inserir"></textarea></p>
+            <input type="hidden" name="setAviso" value=1>
+            <p><input type="submit" class="btn btn-success" value='Salvar' /></p>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="../js/ckeditor_standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace("avisos_inserir").config.width = 850;
+</script>

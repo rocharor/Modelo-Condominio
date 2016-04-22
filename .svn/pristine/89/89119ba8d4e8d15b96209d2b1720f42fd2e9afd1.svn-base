@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <tr>
+        <td><b>Data</b></td>
+        <td><b>Objeto</b></td>
+        <td><b>Observação</b></td>
+        <td><b>Status</b></td>
+    </tr>
+    <tr>
+        <td>01/01/2016</td>
+        <td>Chave xxxx</td>
+        <td>falar com fulano de tal</td>
+        <td><span class="text-danger"><b>Pendente</b></span></td>
+    </tr>
+    <tr>
+        <td>25/01/2016</td>
+        <td>Boneca yyyyy</td>
+        <td>falar com fulano de tal</td>
+        <td><span class="text-success"><b>Devolvido</b></span></td>
+    </tr>
+</table>

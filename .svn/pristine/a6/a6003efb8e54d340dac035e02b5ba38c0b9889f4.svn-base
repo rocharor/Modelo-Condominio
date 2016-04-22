@@ -1,0 +1,81 @@
+$(".act-visualizar-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var caminho = $(".table").data('caminho');
+
+    $.ajax({
+        url: caminho,
+        dataType: 'json',
+        type: 'POST',
+        data: {'act': 'getAviso',
+               'aviso_id':aviso_id},
+        success: function(retorno){
+            $('#titulo_visualizar').html(retorno[0].titulo);
+            $('#data_visualizar').html(retorno[0].data_evento);
+            $('#descicao_visualizar').html(retorno[0].descricao);
+
+            $('#modal_visualizar_aviso').modal('show');
+        },
+        error: function(retorno){
+            alert('Erro no sistema !!!');
+            return false
+        }
+    });
+
+
+});
+
+$(".act-editar-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var caminho = $(".table").data('caminho');
+    $.ajax({
+        url: caminho,
+        dataType: 'json',
+        type: 'POST',
+        data: {'act': 'getAviso',
+               'aviso_id':aviso_id},
+        success: function(retorno){
+            $('#titulo_editar').val(retorno[0].titulo);
+            $('#data_editar').val(retorno[0].data_evento);
+            CKEDITOR.instances["editor_aviso_editar"].setData(retorno[0].descricao);
+
+            $('#modal_editar_aviso').modal('show');
+        },
+        error: function(retorno){
+            alert('Erro no sistema !!!');
+            return false
+        }
+    });
+
+
+});
+
+$(".act-excluir-aviso").click(function(e){
+    e.preventDefault();
+    var aviso_id = $(this).parent().parent().data('aviso-id');
+    var caminho = $(".table").data('caminho');
+    if(confirm('Deseja realmente excluir o aviso?')){
+        $.ajax({
+            url: caminho,
+            dataType: 'json',
+            type: 'POST',
+            data: {'act': 'excluirAviso',
+                   'aviso_id':aviso_id},
+            success: function(retorno){
+                if(retorno == true){
+                    alert('Excluido com sucesso.');
+                    window.location.reload();
+                }else{
+                    alert('Erro ao excluir.');
+                }
+            },
+            error: function(retorno){
+                alert('Erro no sistema !!!');
+                return false
+            }
+        });
+    }
+
+});
+

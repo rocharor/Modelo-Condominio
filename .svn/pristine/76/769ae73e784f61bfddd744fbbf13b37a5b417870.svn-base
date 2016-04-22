@@ -1,0 +1,104 @@
+<?php
+    namespace Rocharor\Condominio\Modulos\Controllers;
+
+    use Rocharor\Condominio\Modulos\Models\AvisoModel;
+    use Rocharor\Condominio\Sistema\Controller;
+    use Rocharor\Condominio\Sistema\Sessao;
+
+    class Adm extends Controller{
+
+        public function loginAction(){
+
+            if(Sessao::pegaSessao('login') == 1){
+                $variaveis = ['pagina_main' => 'adm/adm.html',
+                              'link' => '../',
+                              'msg' => '',
+                              'anuncio'=>false];
+            }else if(isset($_POST['user_login']) || isset($_POST['senha_login'])){
+                $user = $_POST['user_login'];
+                $pass = $_POST['senha_login'];
+
+                if($user == 'admin' && $pass == 'admin'){
+                    Sessao::setaSessao(array('login'=>1));
+                    $variaveis = ['pagina_main' => 'adm/adm.html',
+                              'link' => '../',
+                              'msg' => '',
+                              'anuncio'=>false];
+                }else{
+                    $variaveis = ['pagina_main' => 'adm/login.html',
+                              'link' => '../',
+                              'msg' => 'Usuário ou senha invalidos',
+                              'anuncio'=>false];
+                }
+            }else{
+                $variaveis = ['pagina_main' => 'adm/login.html',
+                              'link' => '../',
+                              'msg' => '',
+                              'anuncio'=>false];
+            }
+
+            $this->view('main',$variaveis);
+        }
+
+        public function logoffAction(){
+
+            Sessao::setaSessao(array('login'=>0));
+            header("location: "._CAMINHO_.'/adm/login');
+
+        }
+
+        public function avisoAction(){
+
+            if(isset($_POST['setAviso'])){
+                $aviso = new AvisoModel();
+
+                echo 'Gravou Aviso';
+                die('');
+            }
+
+            $variaveis = ['pagina_main' => 'adm/admAviso.html',
+                          'link' => '../',
+                          'anuncio'=>false];
+
+            $this->view('main',$variaveis);
+
+        }
+
+
+
+
+
+
+
+
+
+
+        public function indexAction($link){
+            $msg = '';
+            if(isset($_POST['metodo'])){
+                $metodo = $_POST['metodo'];
+                $dados = $_POST;
+                unset($dados['metodo']);
+
+                $geral = new GeralModel;
+                $ret = $geral->$metodo($dados);
+                if($ret){
+                    $msg = 'Inserido com sucesso';
+                }
+            }
+
+            if(!isset($_SESSION['logado']) && Sessao::pegaSessao('logado') == 0){
+                $variaveis = ['pagina_main' => 'adm/login.html',
+                              'link' => $link,
+                              'msg' => '',
+                              'anuncio'=>false];
+            }else{
+                $variaveis = ['pagina_main' => 'adm/adm.html',
+                              'link' => $link,
+                              'msg' => $msg,
+                              'anuncio'=>false];
+            }
+
+            $this->view('main',$variaveis);
+        }
+    }

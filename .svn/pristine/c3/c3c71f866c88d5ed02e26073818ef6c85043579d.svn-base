@@ -1,0 +1,15 @@
+<?php
+    namespace Rocharor\Condominio\Controllers;
+
+    use Rocharor\Condominio\Gerais\Controller;
+
+    class Obras extends Controller{
+
+        public function indexAction($link){
+            $variaveis = ['pagina_main' => 'obras.html',
+                          'link' => $link,
+                          'anuncio'=>true];
+
+            $this->view('main',$variaveis);
+        }
+    }

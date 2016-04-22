@@ -1,0 +1,4 @@
+<div class="text-danger" align="center">
+    <h1>Página de erro 404</h1>
+    <img src="{$link}{$smarty.const._CAMINHO_}/imagens/404.jpg" width="100%"/>
+</div>

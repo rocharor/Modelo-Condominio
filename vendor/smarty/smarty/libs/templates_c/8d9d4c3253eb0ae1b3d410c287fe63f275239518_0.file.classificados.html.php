@@ -1,0 +1,35 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-02 13:50:29
+  from "C:\xampp\htdocs\condominio\App\Modulos\Views\classificados.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56d6e195be03b0_56452390',
+  'file_dependency' => 
+  array (
+    '8d9d4c3253eb0ae1b3d410c287fe63f275239518' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\condominio\\App\\Modulos\\Views\\classificados.html',
+      1 => 1456922997,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_56d6e195be03b0_56452390 ($_smarty_tpl) {
+?>
+<div class="row">
+    <div class="col-lg-4 col-xs-12" style="border: solid 1px;">
+        <h2>Carro xxx skdskdskds</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies, risus eget fringilla tincidunt, ligula quam rhoncus ex, at egestas orci felis ut leo. Fusce viverra ipsum eget est eleifend, ut luctus nisi ultricies. Sed at metus orci. Nam viverra eros et nunc vestibulum, eu interdum neque volutpat. Vivamus accumsan, lacus a vehicula egestas, nisl quam lacinia lectus, vitae finibus ligula diam id quam. Nam venenatis dui a enim dignissim, eu pretium libero ornare. Mauris sed ipsum non purus maximus sollicitudin nec et mauris.</p>
+    </div>
+
+    <div class="col-lg-4 col-xs-12" style="border: solid 1px;">
+        <h2>Vendo salgados ap xxx</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies, risus eget fringilla tincidunt, ligula quam rhoncus ex, at egestas orci felis ut leo. Fusce viverra ipsum eget est eleifend, ut luctus nisi ultricies. Sed at metus orci. Nam viverra eros et nunc vestibulum, eu interdum neque volutpat. Vivamus accumsan, lacus a vehicula egestas, nisl quam lacinia lectus, vitae finibus ligula diam id quam. Nam venenatis dui a enim dignissim, eu pretium libero ornare. </p>
+    </div>
+</div><?php }
+}
